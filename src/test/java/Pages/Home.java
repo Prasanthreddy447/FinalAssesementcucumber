@@ -13,6 +13,9 @@ public class Home {
 	@FindBy(xpath="//a[text()='Home']")
 	WebElement HomeButton;
 	
+	@FindBy(xpath="//button[@class='nav-link active']")
+	WebElement YourFeedBuuton;
+	
 //	@FindBy(xpath="//a[@class='nav-link ']/i")
 //	WebElement ArticleButton;
 	
@@ -34,6 +37,11 @@ public class Home {
 	public boolean displayhome()
 	{
 		return HomeButton.isDisplayed();
+	}
+	
+	public boolean DisplayYourFeed()
+	{
+		return YourFeedBuuton.isDisplayed();
 	}
 	
 	public void clickonArticlebutton()

@@ -60,6 +60,7 @@ public class StepdefinitionArticle {
 	public void user_should_be_on_home_page() {
 		
 		Assert.assertTrue(home.displayhome());
+		Assert.assertTrue(home.DisplayYourFeed());
 	    
 	}
 	
