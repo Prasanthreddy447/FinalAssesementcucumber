@@ -19,6 +19,9 @@ public class Home {
 	@FindBy(xpath="//a[text()='New Article']")
 	WebElement ArticleButton;
 	
+	@FindBy(xpath="//button[text()='Global Feed']")
+	WebElement GlobalFeedButton;
+	
 	
 	
 	public Home(WebDriver driver)
@@ -38,9 +41,19 @@ public class Home {
 		ArticleButton.click();
 	}
 	
-	public void clickonHomelebutton()
+	public void clickonHomebutton()
 	{
 		HomeButton.click();
+	}
+	
+	public boolean DisplayHomebutton()
+	{
+		return HomeButton.isDisplayed();
+	}
+	
+	public void ClickingOnGlobalFeed()
+	{
+		GlobalFeedButton.click();
 	}
 	
 		

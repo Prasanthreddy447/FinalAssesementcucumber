@@ -22,6 +22,11 @@ public class Article {
 	@FindBy(xpath="//button[text()='Publish Article']")
 	WebElement publishButton;
 	
+	@FindBy(xpath="//span[@class='error-messages']")
+	WebElement FileexistText;
+	
+	
+	
 	
 	
 	
@@ -54,6 +59,13 @@ public class Article {
 	{
 		publishButton.submit();
 	}
+	
+	public String GetTextfromArticle()
+	{
+		return FileexistText.getText();
+	}
+	
+	
 	
 	
 	

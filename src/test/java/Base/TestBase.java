@@ -5,8 +5,7 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
 
 public class TestBase {
 	
@@ -28,7 +27,7 @@ public class TestBase {
 			
 		}
 		
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3000));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10000));
 //		else if(BrowserName.equalsIgnoreCase("edge"))
 //		{
 //			driver = new EdgeDriver(option);
@@ -68,6 +67,16 @@ public class TestBase {
 		}
 		
 		TestClass=null;
+	}
+	
+	public static void PageNumber()
+	{
+		
+	}
+	
+	public static void Alert()
+	{
+		driver.switchTo().alert().accept();
 	}
 	
 

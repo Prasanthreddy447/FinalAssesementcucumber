@@ -9,7 +9,10 @@ import org.testng.Assert;
 import Base.TestBase;
 
 import Pages.Article;
+import Pages.DeleteArticle;
+import Pages.ViewArticle;
 import Pages.Home;
+import Pages.LogOut;
 import Pages.LoginPage;
 import Pages.LoginCred;
 import io.cucumber.datatable.DataTable;
@@ -24,7 +27,9 @@ public class StepdefinitionArticle {
 	LoginCred logincred;
 	Home home;
 	Article article;
-	
+	ViewArticle viewarticle;
+	DeleteArticle deleteArticle;
+	LogOut logout;
 	
 	
 	public StepdefinitionArticle()
@@ -33,6 +38,9 @@ public class StepdefinitionArticle {
 		logincred = new LoginCred(driver);
 		home = new Home(driver);
 		article = new Article(driver);
+		viewarticle = new ViewArticle(driver);
+		deleteArticle = new DeleteArticle(driver);
+		logout = new LogOut(driver); 
 	}
 	
 	// LOGIN PAGE
@@ -84,6 +92,74 @@ public class StepdefinitionArticle {
 		
 		article.ClickingPublishButton();
 	    
+	}
+	
+	
+	//VIEW Article
+	
+	@Given("user should be on global feed")
+	public void user_should_be_on_global_feed() {
+		home.clickonHomebutton();
+		home.ClickingOnGlobalFeed();
+		
+	    
+	}
+	
+	@When("User selects an article Prasanth Article")
+	public void user_selects_an_article_prasanth_article() {
+		viewarticle.ClickingDSarticle();
+	}
+	
+	@Then("Article detail page must be displayed")
+	public void article_detail_page_must_be_displayed() {
+		viewarticle.ArticleViewPageEditDisplayed();
+		viewarticle.ArticleViewPageDeleteDisplayed();
+	}
+	
+	
+	//UPDATE ARTICLE
+	String edit="I AM WORKING AS ENGINNER";
+	
+	@When("User update Article details")
+	public void user_update_article_details() {
+		viewarticle.ClickingEditarticle();
+		viewarticle.EditinhgText(edit);
+		
+	    
+	}
+	@Then("Article detail must be updated")
+	public void article_detail_must_be_updated() {
+		viewarticle.ClickPublishButton();
+		Assert.assertTrue(deleteArticle.DisplayText());
+		
+	}
+	
+	//DELETE ARTICLE
+	
+	@When("User delete Article")
+	public void user_delete_article() {
+		viewarticle.ClickingDeleteArticle();
+		
+	    
+	}
+	@Then("Article must be deleted")
+	public void article_must_be_deleted() {
+		
+		TestBase.Alert();
+		home.DisplayHomebutton();
+		
+	    
+	}
+	
+	
+	//negative scenario
+	@Then("Article must give message {string}")
+	public void article_must_give_message(String string) {
+	    
+		article.ClickingPublishButton();
+		Assert.assertEquals(string, article.GetTextfromArticle());
+		logout.ClickOnLogOutDrop();
+		logout.ClickOnSignout();
 	}
 
 }
