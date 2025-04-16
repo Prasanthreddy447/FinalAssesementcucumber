@@ -69,10 +69,6 @@ public class TestBase {
 		TestClass=null;
 	}
 	
-	public static void PageNumber()
-	{
-		
-	}
 	
 	public static void Alert()
 	{

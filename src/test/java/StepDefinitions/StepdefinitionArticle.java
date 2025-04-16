@@ -91,6 +91,8 @@ public class StepdefinitionArticle {
 	public void article_must_be_created() {
 		
 		article.ClickingPublishButton();
+		Assert.assertTrue(viewarticle.ArticleViewPageEditDisplayed());
+		Assert.assertTrue(viewarticle.ArticleViewPageDeleteDisplayed());
 	    
 	}
 	
@@ -102,6 +104,7 @@ public class StepdefinitionArticle {
 		home.clickonHomebutton();
 		home.ClickingOnGlobalFeed();
 		
+		
 	    
 	}
 	
@@ -112,8 +115,9 @@ public class StepdefinitionArticle {
 	
 	@Then("Article detail page must be displayed")
 	public void article_detail_page_must_be_displayed() {
-		viewarticle.ArticleViewPageEditDisplayed();
-		viewarticle.ArticleViewPageDeleteDisplayed();
+		Assert.assertTrue(viewarticle.ArticleViewPageEditDisplayed());
+		Assert.assertTrue(viewarticle.ArticleViewPageDeleteDisplayed());
+		
 	}
 	
 	
@@ -146,7 +150,10 @@ public class StepdefinitionArticle {
 	public void article_must_be_deleted() {
 		
 		TestBase.Alert();
-		home.DisplayHomebutton();
+		Assert.assertTrue(home.DisplayHomebutton());
+		logout.ClickOnLogOutDrop();
+		logout.ClickOnSignout();
+		TestBase.teardown();
 		
 	    
 	}
@@ -158,8 +165,8 @@ public class StepdefinitionArticle {
 	    
 		article.ClickingPublishButton();
 		Assert.assertEquals(string, article.GetTextfromArticle());
-		logout.ClickOnLogOutDrop();
-		logout.ClickOnSignout();
+		TestBase.teardown();
+		
 	}
 
 }

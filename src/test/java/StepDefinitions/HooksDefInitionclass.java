@@ -6,14 +6,15 @@ import org.openqa.selenium.WebDriver;
 
 import Base.TestBase;
 import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 
 public class HooksDefInitionclass {
 	
-	WebDriver driver;
-	@BeforeAll
+	 WebDriver driver;
+	@Before
 	public static void setupbrowser()
 	{
 		TestBase.initdriver();
@@ -30,10 +31,6 @@ public class HooksDefInitionclass {
 		}
 	}
 	
-//	@After
-//	public void teardown()
-//	{
-//		driver.quit();
-//	}
+	
 
 }
